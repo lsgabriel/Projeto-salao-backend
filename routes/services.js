@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {services} = require('../models');
 
-//Listar todos os produtos
+//Listar todos os serviços
 router.get('/', async (req, res, next)=>{
     const token = req.headers.authorization;
     if(token=='salao'){
@@ -12,13 +12,13 @@ router.get('/', async (req, res, next)=>{
         res.status(401).send('Token não autorizado'); 
 });
 
-// Cadastrar produto
+// Cadastrar serviço
 router.post('/', async (req, res, next)=>{
     const service = await Services.create(req.body);
     res.status(201).json(service);
 });
 
-//Listar produto por id
+//Listar serviço por id
 router.get('/:id', async (req, res, next)=>{
     const service = await Services.findAll({
         where:{
@@ -28,7 +28,7 @@ router.get('/:id', async (req, res, next)=>{
     res.status(200).json(...service);
 });
 
-//Listar produtos por tipo
+//Listar por tipo
 router.get('/type/:type', async (req, res, next )=>{
     const service = await Services.findAll({
         where:{
@@ -38,7 +38,7 @@ router.get('/type/:type', async (req, res, next )=>{
     res.status(200).json(service);
 });
 
-//Apagar produto por id
+//Apagar serviço por id
 router.delete('/:id', async (req, res, next)=>{
     const service = await Services.destroy({
         where:{
@@ -48,7 +48,7 @@ router.delete('/:id', async (req, res, next)=>{
     res.status(204).json(service);
 });
 
-//Atualizar produto por id
+//Atualizar por id
 router.put('/:id', async (req, res, next)=>{
     const service = await Services.update(req.body, {
         where:{
