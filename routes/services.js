@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {services} = require('../models');
+const {Services} = require('../models');
 
 //Listar todos os serviços
 router.get('/', async (req, res, next)=>{
@@ -9,7 +9,7 @@ router.get('/', async (req, res, next)=>{
         const services = await Services.findAll();
         res.status(200).json(services);
     }
-        res.status(401).send('Token não autorizado'); 
+        res.status(401).send('Token não autorizado');
 });
 
 // Cadastrar serviço
