@@ -29,7 +29,7 @@ router.get('/:id', async (req, res, next)=>{
 });
 
 //listar por email
-router.get('/:email', async (req, res, next)=>{
+router.get('/email/:email', async (req, res, next)=>{
     const profissional = await Profissional.findAll({
         where:{
             email: req.params.email
