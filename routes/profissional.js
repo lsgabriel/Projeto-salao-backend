@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Profissional} = require('../models');
 
-//Listar todos os serviços
+//Listar todos 
 router.get('/', async (req, res, next)=>{
     const token = req.headers.authorization;
     if(token=='salao'){
@@ -12,13 +12,13 @@ router.get('/', async (req, res, next)=>{
         res.status(401).send('Token não autorizado');
 });
 
-// Cadastrar serviço
+// Cadastrar profissional
 router.post('/', async (req, res, next)=>{
     const profissional = await Profissional.create(req.body);
     res.status(201).json(profissional);
 });
 
-//Listar serviço por id
+//Listar por id
 router.get('/:id', async (req, res, next)=>{
     const profissional = await Profissional.findAll({
         where:{
@@ -48,7 +48,7 @@ router.get('/type/:type', async (req, res, next )=>{
     res.status(200).json(profissional);
 });
 
-//Apagar serviço por id
+//Apagar por id
 router.delete('/:id', async (req, res, next)=>{
     const profissional = await Profissional.destroy({
         where:{
